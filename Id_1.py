@@ -22,15 +22,15 @@ nr_list = ('1','2','3','4','5','6','7','8','9','0')
 while True:
     if len(mqtt.besked) > 1:
         if mqtt.besked[0] == '#': #set en fave med adafrute
-            rød = (int(mqtt.besked[1:3],16)/100)
-            grøn =(int(mqtt.besked[3:5],16)/100)
-            blå = (int(mqtt.besked[5:7],16)/100)
-            set_led(int(rød*styrke),int(grøn*styrke),int(blå*styrke))
+            rød = (int(mqtt.besked[1:3],16)/100) # split beskeden op og lav det hexsidisimale tal om til nomale numre 
+            grøn =(int(mqtt.besked[3:5],16)/100) # split beskeden op og lav det hexsidisimale tal om til nomale numre 
+            blå = (int(mqtt.besked[5:7],16)/100) # split beskeden op og lav det hexsidisimale tal om til nomale numre 
+            set_led(int(rød*styrke),int(grøn*styrke),int(blå*styrke)) # set lederne til den fave vi sate og giv den styrken 
     
     if len(mqtt.besked) > 0: #sæt styreken med adafrute
         if mqtt.besked[0] in nr_list:
-            styrke = int(mqtt.besked)
-            set_led(int(rød*styrke),int(grøn*styrke),int(blå*styrke))
+            styrke = int(mqtt.besked) 
+            set_led(int(rød*styrke),int(grøn*styrke),int(blå*styrke)) # set lederne til den fave vi sate og giv den styrken 
     
     if len(mqtt.besked) != 0: # Her nulstilles indkommende beskeder
         mqtt.besked = ""
