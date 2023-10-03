@@ -4,7 +4,7 @@ def do_connect():
     wlan.active(True)
     if not wlan.isconnected():
         print('connecting to network...')
-        wlan.connect('','')
+        wlan.connect('','') # put nætvrks novn og så nætværks kode her
         while not wlan.isconnected():
             pass
     print('network config:', wlan.ifconfig()[0])
